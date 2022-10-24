@@ -46,7 +46,7 @@ class CustomCommandValidator
         $path = CommandHelper::getFilePath($options['path']);
 
         // File must exist before we proceed
-         if(!\Storage::exists($path)) {
+         if(!file_exists($path)) {
             PrintConsole::error("File [{$path}] does not exists!");
             return false; // Error exit code
         }
@@ -62,9 +62,10 @@ class CustomCommandValidator
          * did not profived config filename, or 
          * the config file does not exists
          */
-        if(!\Storage::exists('/google/'.$options['cfn']) && $options['save']) {
+        $configPath = CommandHelper::getFilePath($options['cfn']);
+        if(!file_exists($configPath) && $options['save']) {
             // Credentials file does not exists
-            PrintConsole::error("Config file [{$options['cfn']}] does not exists!");
+            PrintConsole::error("Google sheets credentials file [{$options['cfn']}] does not exists!");
             return false;
         }
 

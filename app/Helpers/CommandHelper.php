@@ -15,10 +15,13 @@ class CommandHelper
         if(strpos($path, '/') === 0) {
             $path = substr($path, 1);
         }
-        
-        // removing staring "storage" from path
-        if(strpos($path, 'storage/') === 0) {
-            $path = substr($path, 8);
+        if(!\Phar::running()) {
+            return $path;
+        }
+        $path = dirname(\Phar::running(false)).'/'.$path;
+        // for docker container purpose: edge case that just happend
+        if(strpos($path, '//') === 0) {
+            $path = substr($path, 1);
         }
         return $path;
     }

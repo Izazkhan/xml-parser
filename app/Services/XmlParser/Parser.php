@@ -24,7 +24,10 @@ class Parser
     public function loadFile($path)
     {
         try {
-            $this->document->load('storage/'.$path);
+            
+            $fileContents = file_get_contents($path);
+            $this->document->loadXml($fileContents);
+
         } catch (\ErrorException $e) {
             // ErrorException get throew when document failed to load
             \Log::error($e);
@@ -45,7 +48,7 @@ class Parser
     public function xmlToArray($path)
     {
         try {
-            $fileContents = Storage::get($path);
+            $fileContents = file_get_contents($path);
             $data = simplexml_load_string($fileContents, 'SimpleXMLElement', LIBXML_NOCDATA);
             $json = json_encode($data);
             $json = str_replace("{}", "\"\"", $json);

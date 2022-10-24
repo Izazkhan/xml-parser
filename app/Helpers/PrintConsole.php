@@ -33,7 +33,7 @@ class PrintConsole
     public static function failed($msg)
     {
         self::clearLine();
-        echo "\e[31m{$msg}: \e[41mfailed\e[49m \e[39m\n";
+        echo "\e[31m{$msg}: failed \e[39m\n";
     }
     
     public static function line($msg)

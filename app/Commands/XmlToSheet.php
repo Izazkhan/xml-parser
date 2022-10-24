@@ -36,12 +36,13 @@ class XmlToSheet extends Command
     protected $isError = false;
     
     /**
-    * Execute the console command.
+     * Execute the console command.
     *
     * @return mixed
     */
     public function handle()
     {
+        $path = CommandHelper::getFilePath($this->option('path'));
         $errorExitCode = 0;
         $successExitCode = 1;
         try {
@@ -49,7 +50,7 @@ class XmlToSheet extends Command
                 return $errorExitCode;
             }
             
-            // Get path
+            // Get xml file path
             $path = CommandHelper::getFilePath($this->option('path'));
             
             // Xml Parser
@@ -107,8 +108,9 @@ class XmlToSheet extends Command
                     return $errorExitCode; // Error exit code
                 } else {
                     // Default: Spreadsheet
+                    $configPath = CommandHelper::getFilePath($this->option('cfn'));
                     $storageMedium = new StorageMedium(
-                        new GoogleSheetsService($this->option('cfn')) // cfn: Google credentials/config file name
+                        new GoogleSheetsService($configPath) // cfn: Google credentials/config file name
                     );
                 }
                 

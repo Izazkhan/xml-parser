@@ -13,22 +13,22 @@ use Google\Service\Exception as GoogleServiceException;
 class Service implements StorageMediumInterface
 {
     protected $sheets;
-    protected $configFilename;
+    protected $configPath;
     /**
      * Configuration of google sheet api.
      */
-    public function __construct($configFilename = '')
+    public function __construct($configPath = '')
     {
-       $this->configFilename = $configFilename;
+       $this->configPath = $configPath;
     }
 
     public function initialize()
     {
         $config = config('google');
-        if(is_string($this->configFilename) && $this->configFilename != '') {
+        if(is_string($this->configPath) && $this->configPath != '') {
             $config = array_merge($config, [
                 'service' => [
-                    'file'    => storage_path('google/'.$this->configFilename),
+                    'file'    => $this->configPath,
                     'enable'  => env('GOOGLE_SERVICE_ENABLED', true)
                 ]
             ]);

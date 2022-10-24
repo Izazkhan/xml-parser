@@ -24,6 +24,7 @@
     },
     "require-dev": {
         "mockery/mockery": "^1.4.3",
+        "owenvoke/laravel-zero-docker": "^1.0",
         "pestphp/pest": "^1.22"
     },
     "autoload": {

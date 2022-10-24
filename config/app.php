@@ -40,7 +40,7 @@ return [
     |
     */
 
-    'env' => 'production',
+    'env' => 'development',
 
     /*
     |--------------------------------------------------------------------------
@@ -55,6 +55,7 @@ return [
 
     'providers' => [
         App\Providers\AppServiceProvider::class,
+        // \OwenVoke\LaravelZeroDocker\DockerServiceProvider::class,
     ],
 
 ];
