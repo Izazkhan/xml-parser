@@ -2,6 +2,7 @@ Pull/clone this repo:
 Note: you should have docker installed on your machine
 
 
+    composer install
     php xmlparser app:build
     cd builds
     docker build -t parserapp .
