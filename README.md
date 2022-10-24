@@ -1,4 +1,6 @@
 Pull/clone this repo:
+Note: you should have docker installed on your machine
+
 
     cd builds
     docker build -t parserapp .
