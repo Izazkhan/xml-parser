@@ -2,6 +2,7 @@ Pull/clone this repo:
 Note: you should have docker installed on your machine
 
 
+    php xmlparser app:build
     cd builds
     docker build -t parserapp .
     docker run parserapp xml:save --path="storage/coffee-feed-valid.xml" --validate --eh --save --medium=spreadsheet --cfn=creds.json --sid='11JFLFFnm_vO2xnTxoXYjJppuolfrL91sU3B-9YDyMg4' --sn="Sheet1"
