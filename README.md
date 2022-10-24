@@ -1,36 +1,34 @@
-<p align="center">
-    <img title="Laravel Zero" height="100" src="https://raw.githubusercontent.com/laravel-zero/docs/master/images/logo/laravel-zero-readme.png" />
-</p>
+Pull/clone this repo:
 
-<p align="center">
-  <a href="https://github.com/laravel-zero/framework/actions"><img src="https://img.shields.io/github/workflow/status/laravel-zero/framework/Tests.svg" alt="Build Status"></img></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/dt/laravel-zero/framework.svg" alt="Total Downloads"></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/v/laravel-zero/framework.svg?label=stable" alt="Latest Stable Version"></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/l/laravel-zero/framework.svg" alt="License"></a>
-</p>
+    cd builds
+    docker build -t parserapp .
+    docker run parserapp xml:save --path="storage/coffee-feed-valid.xml" --validate --eh --save --medium=spreadsheet --cfn=creds.json --sid='11JFLFFnm_vO2xnTxoXYjJppuolfrL91sU3B-9YDyMg4' --sn="Sheet1"
 
-<h4> <center>This is a <bold>community project</bold> and not an official Laravel one </center></h4>
 
-Laravel Zero was created by, and is maintained by [Nuno Maduro](https://github.com/nunomaduro), and is a micro-framework that provides an elegant starting point for your console application. It is an **unofficial** and customized version of Laravel optimized for building command-line applications.
+Everything will just work out :)
 
-- Built on top of the [Laravel](https://laravel.com) components.
-- Optional installation of Laravel [Eloquent](https://laravel-zero.com/docs/database/), Laravel [Logging](https://laravel-zero.com/docs/logging/) and many others.
-- Supports interactive [menus](https://laravel-zero.com/docs/build-interactive-menus/) and [desktop notifications](https://laravel-zero.com/docs/send-desktop-notifications/) on Linux, Windows & MacOS.
-- Ships with a [Scheduler](https://laravel-zero.com/docs/task-scheduling/) and  a [Standalone Compiler](https://laravel-zero.com/docs/build-a-standalone-application/).
-- Integration with [Collision](https://github.com/nunomaduro/collision) - Beautiful error reporting
+Check Google spreadsheet for result:
+https://docs.google.com/spreadsheets/d/11JFLFFnm_vO2xnTxoXYjJppuolfrL91sU3B-9YDyMg4/edit?usp=sharing
 
-------
 
-## Documentation
+Play more with command:
+- If you just want to validate the file:
+```
+docker run parserapp xml:save --path="storage/coffee-feed-valid.xml" --validate
+```
 
-For full documentation, visit [laravel-zero.com](https://laravel-zero.com/).
+- If you don't provide path option, the command should print a message accordingly:
 
-## Support the development
-**Do you like this project? Support it by donating**
-
-- PayPal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L)
-- Patreon: [Donate](https://www.patreon.com/nunomaduro)
-
-## License
-
-Laravel Zero is an open-source software licensed under the MIT license.
+ ```
+ docker run parserapp xml:save
+ ```
+ 
+ Options meaning
+ ```
+ --eh : Extract headers
+ --save: Saving the data to provided medium (spreaddheet)
+ --cfn: credentials file path/name
+ --sid: SpreadsheetID
+ --sn: SheetName
+ --validate: to validate file according to provided .dft file
+ ```
