@@ -2,11 +2,7 @@ Pull/clone this repo:
 Note: you should have docker installed on your machine
 
 
-    composer install
-    php xmlparser app:build
-    cd builds
-    docker build -t parserapp .
-    docker run parserapp xml:save --path="storage/coffee-feed-with-dtd.xml" --validate --eh --save --medium=spreadsheet --cfn=storage/google/creds.json --sid='11JFLFFnm_vO2xnTxoXYjJppuolfrL91sU3B-9YDyMg4' --sn="Sheet1"
+    git clone https://github.com/Izazkhan/xml-parser.git xmlparser && cd xmlparser && composer install && clear && php xmlparser app:build && cd builds && docker build -t parserapp . && docker run parserapp xml:save --path="storage/coffee-feed-with-dtd.xml" --validate --eh --save --medium=spreadsheet --cfn=storage/google/creds.json --sid='11JFLFFnm_vO2xnTxoXYjJppuolfrL91sU3B-9YDyMg4' --sn="Sheet1"
 
 
 Everything will just work out :)
