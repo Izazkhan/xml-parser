@@ -59,15 +59,5 @@ class Parser
             throw new ServiceException("Xml to json conversion failed, for more detail please check log file");
         }
     }
-    
-    public function extractHeaders($catalog)
-    {
-        try {
-            return array_keys($catalog['item'][0]);
-        } catch (\Exception $e) {
-            \Log::error($e);
-            throw new ServiceException("Xml headers extraction failed, for more detail please check log file");
-        }
-    }
 }
 ?>

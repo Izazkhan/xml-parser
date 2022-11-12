@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Interfaces\StorageMedium;
 use Illuminate\Support\ServiceProvider;
+use App\Services\StorageMediums\GoogleSheet\Service;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(StorageMedium::class, Service::class);
     }
 }

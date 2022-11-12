@@ -4,14 +4,13 @@ namespace App\Commands;
 
 use Log;
 use App\Helpers\PrintConsole;
-use App\Helpers\CommandHelper;
-use App\Services\StorageMedium;
+use App\Helpers\PathHelper;
+use App\Interfaces\StorageMedium;
 use App\Services\XmlParser\Parser;
 use App\Exceptions\ServiceException;
 use App\Helpers\CustomCommandValidator;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
-use App\Services\StorageMediums\GoogleSheet\Service as GoogleSheetsService;
 
 class XmlToSheet extends Command
 {
@@ -20,7 +19,7 @@ class XmlToSheet extends Command
     *
     * @var string
     */
-    protected $signature = 'xml:save {--path=} {--medium=} {--cfn=} {--validate} {--eh} {--save} {--sn=} {--sid=}';
+    protected $signature = 'xml:save {--path=} {--validate} {--save}';
     
     /**
     * The description of the command.
@@ -36,13 +35,20 @@ class XmlToSheet extends Command
     protected $isError = false;
     
     /**
+    * Storage medium we will use to store data
+    * @var bool
+    */
+    protected $medium;
+    
+    /**
      * Execute the console command.
     *
     * @return mixed
     */
-    public function handle()
+
+    public function handle(StorageMedium $storageMedium)
     {
-        $path = CommandHelper::getFilePath($this->option('path'));
+        $path = PathHelper::getFilePath($this->option('path'));
         $errorExitCode = 0;
         $successExitCode = 1;
         try {
@@ -51,7 +57,7 @@ class XmlToSheet extends Command
             }
             
             // Get xml file path
-            $path = CommandHelper::getFilePath($this->option('path'));
+            $path = PathHelper::getFilePath($this->option('path'));
             
             // Xml Parser
             $parser = new Parser();
@@ -71,25 +77,14 @@ class XmlToSheet extends Command
                     PrintConsole::start($task);
                     $parser->validateXml(); //validate xml
                     PrintConsole::completed($task);
-                    $dataToBeStored = [];
-                    $sheetHeaders = [];
                 }
                 
                 if ($this->option('save') === true) {
                     // Converting Xml to JSON
                     $task = "Converting Xml to JSON";
                     PrintConsole::start($task);
-                    $catalog = $parser->xmlToArray($path);
-                    $dataToBeStored = $catalog['item'];
-                    PrintConsole::completed($task);
-                    
-                    if ($this->option('eh') === true) {
-                        $task2 = "Extracting headers";
-                        // Extracting headers
-                        PrintConsole::start($task);
-                        $sheetHeaders = $parser->extractHeaders($catalog);
-                        PrintConsole::completed($task);
-                    }
+                    $dataToBeStored = $parser->xmlToArray($path);
+                     PrintConsole::completed($task);
                 }
                 
             } catch (ServiceException $e) {
@@ -99,37 +94,13 @@ class XmlToSheet extends Command
             }
             
             // Google Spreadsheet section starts here
-            $storageMedium = null;
             if ($this->option('save') === true) {
-                if ($this->option('medium') == 'mysql') {
-                    // Change storage Medium
-                    // $storageMedium = new StorageMedium(new MysqlService($config));
-                    PrintConsole::warning("No Implementation for MySql yet!");
-                    return $errorExitCode; // Error exit code
-                } else {
-                    // Default: Spreadsheet
-                    $configPath = CommandHelper::getFilePath($this->option('cfn'));
-                    $storageMedium = new StorageMedium(
-                        new GoogleSheetsService($configPath) // cfn: Google credentials/config file name
-                    );
-                }
                 
                 // This try_catch block is for Google Spreadsheet / Storage medium
                 try {
-                    $task = "Google spreadsheet";
-                    // Task 1: to initialize google spreadsheet
-                    PrintConsole::start($task, 'Initializing...');
-                    $storageMedium->initialize();
-                    PrintConsole::completed($task . ' initialized');
-                    
-                    // Task 2: to save data to google spreadsheet
-                    PrintConsole::start($task, 'saving data...');
-                    $storageMedium->connectAndSaveData([
-                        'headers' => $sheetHeaders,
-                        'data' => $dataToBeStored,
-                        'spreadsheetId' => $this->option('sid'),
-                        'sheetName' => $this->option('sn'),
-                    ]);
+                    // Task: to save data to storage medium
+                    PrintConsole::start($task, 'Saving data...');
+                    $storageMedium->saveData($dataToBeStored);
                     PrintConsole::completed($task . ' data saved');
                     
                 } catch (ServiceException $e) {

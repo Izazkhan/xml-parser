@@ -1,0 +1,225 @@
+[2022-11-12 18:18:37] development.ERROR: ErrorException: Undefined array key "data" in /home/izaz-khan/development/xmlparser/app/Services/StorageMediums/GoogleSheet/Service.php:56
+Stack trace:
+#0 /home/izaz-khan/development/xmlparser/app/Services/StorageMediums/GoogleSheet/Service.php(56): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/izaz-khan/development/xmlparser/app/Commands/XmlToSheet.php(106): App\Services\StorageMediums\GoogleSheet\Service->saveData()
+#2 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\Commands\XmlToSheet->handle()
+#3 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Util.php(40): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\Container\Util::unwrapIfClosure()
+#5 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\Container\BoundMethod::callBoundMethod()
+#6 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Container.php(653): Illuminate\Container\BoundMethod::call()
+#7 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(136): Illuminate\Container\Container->call()
+#8 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Command/Command.php(298): Illuminate\Console\Command->execute()
+#9 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\Component\Console\Command\Command->run()
+#10 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(1028): Illuminate\Console\Command->run()
+#11 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(299): Symfony\Component\Console\Application->doRunCommand()
+#12 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(171): Symfony\Component\Console\Application->doRun()
+#13 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\Component\Console\Application->run()
+#14 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/foundation/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\Console\Application->run()
+#15 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/framework/src/Kernel.php(91): Illuminate\Foundation\Console\Kernel->handle()
+#16 /home/izaz-khan/development/xmlparser/xmlparser(37): LaravelZero\Framework\Kernel->handle()
+#17 {main}  
+[2022-11-12 18:22:27] development.ERROR: Illuminate\Support\Arr::isAssoc(): Argument #1 ($array) must be of type array, string given, called in /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php on line 123 {"exception":"[object] (TypeError(code: 0): Illuminate\\Support\\Arr::isAssoc(): Argument #1 ($array) must be of type array, string given, called in /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php on line 123 at /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:406)
+[stacktrace]
+#0 /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php(123): Illuminate\\Support\\Arr::isAssoc()
+#1 /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php(102): Revolution\\Google\\Sheets\\Sheets->orderAppendables()
+#2 /home/izaz-khan/development/xmlparser/app/Services/StorageMediums/GoogleSheet/Service.php(56): Revolution\\Google\\Sheets\\Sheets->append()
+#3 /home/izaz-khan/development/xmlparser/app/Commands/XmlToSheet.php(106): App\\Services\\StorageMediums\\GoogleSheet\\Service->saveData()
+#4 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Commands\\XmlToSheet->handle()
+#5 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#6 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#7 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#8 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Container.php(653): Illuminate\\Container\\BoundMethod::call()
+#9 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(136): Illuminate\\Container\\Container->call()
+#10 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Command/Command.php(298): Illuminate\\Console\\Command->execute()
+#11 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run()
+#12 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(1028): Illuminate\\Console\\Command->run()
+#13 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand()
+#14 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#15 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run()
+#16 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/foundation/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run()
+#17 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/framework/src/Kernel.php(91): Illuminate\\Foundation\\Console\\Kernel->handle()
+#18 /home/izaz-khan/development/xmlparser/xmlparser(37): LaravelZero\\Framework\\Kernel->handle()
+#19 {main}
+"} 
+[2022-11-12 18:23:10] development.ERROR: ErrorException: DOMDocument::validate(): I/O warning : failed to load external entity "/home/izaz-khan/development/xmlparser/catalog.dtd" in /home/izaz-khan/development/xmlparser/app/Services/XmlParser/Parser.php:41
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/izaz-khan/development/xmlparser/app/Services/XmlParser/Parser.php(41): DOMDocument->validate()
+#2 /home/izaz-khan/development/xmlparser/app/Commands/XmlToSheet.php(78): App\Services\XmlParser\Parser->validateXml()
+#3 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\Commands\XmlToSheet->handle()
+#4 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Util.php(40): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#5 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\Container\Util::unwrapIfClosure()
+#6 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\Container\BoundMethod::callBoundMethod()
+#7 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Container.php(653): Illuminate\Container\BoundMethod::call()
+#8 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(136): Illuminate\Container\Container->call()
+#9 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Command/Command.php(298): Illuminate\Console\Command->execute()
+#10 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\Component\Console\Command\Command->run()
+#11 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(1028): Illuminate\Console\Command->run()
+#12 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(299): Symfony\Component\Console\Application->doRunCommand()
+#13 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(171): Symfony\Component\Console\Application->doRun()
+#14 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\Component\Console\Application->run()
+#15 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/foundation/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\Console\Application->run()
+#16 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/framework/src/Kernel.php(91): Illuminate\Foundation\Console\Kernel->handle()
+#17 /home/izaz-khan/development/xmlparser/xmlparser(37): LaravelZero\Framework\Kernel->handle()
+#18 {main}  
+[2022-11-12 18:23:41] development.ERROR: ErrorException: DOMDocument::validate(): I/O warning : failed to load external entity "/storage/catalog.dtd" in /home/izaz-khan/development/xmlparser/app/Services/XmlParser/Parser.php:41
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/izaz-khan/development/xmlparser/app/Services/XmlParser/Parser.php(41): DOMDocument->validate()
+#2 /home/izaz-khan/development/xmlparser/app/Commands/XmlToSheet.php(78): App\Services\XmlParser\Parser->validateXml()
+#3 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\Commands\XmlToSheet->handle()
+#4 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Util.php(40): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#5 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\Container\Util::unwrapIfClosure()
+#6 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\Container\BoundMethod::callBoundMethod()
+#7 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Container.php(653): Illuminate\Container\BoundMethod::call()
+#8 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(136): Illuminate\Container\Container->call()
+#9 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Command/Command.php(298): Illuminate\Console\Command->execute()
+#10 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\Component\Console\Command\Command->run()
+#11 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(1028): Illuminate\Console\Command->run()
+#12 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(299): Symfony\Component\Console\Application->doRunCommand()
+#13 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(171): Symfony\Component\Console\Application->doRun()
+#14 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\Component\Console\Application->run()
+#15 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/foundation/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\Console\Application->run()
+#16 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/framework/src/Kernel.php(91): Illuminate\Foundation\Console\Kernel->handle()
+#17 /home/izaz-khan/development/xmlparser/xmlparser(37): LaravelZero\Framework\Kernel->handle()
+#18 {main}  
+[2022-11-12 18:23:49] development.ERROR: Illuminate\Support\Arr::isAssoc(): Argument #1 ($array) must be of type array, string given, called in /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php on line 123 {"exception":"[object] (TypeError(code: 0): Illuminate\\Support\\Arr::isAssoc(): Argument #1 ($array) must be of type array, string given, called in /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php on line 123 at /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:406)
+[stacktrace]
+#0 /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php(123): Illuminate\\Support\\Arr::isAssoc()
+#1 /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php(102): Revolution\\Google\\Sheets\\Sheets->orderAppendables()
+#2 /home/izaz-khan/development/xmlparser/app/Services/StorageMediums/GoogleSheet/Service.php(56): Revolution\\Google\\Sheets\\Sheets->append()
+#3 /home/izaz-khan/development/xmlparser/app/Commands/XmlToSheet.php(106): App\\Services\\StorageMediums\\GoogleSheet\\Service->saveData()
+#4 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Commands\\XmlToSheet->handle()
+#5 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#6 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#7 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#8 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Container.php(653): Illuminate\\Container\\BoundMethod::call()
+#9 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(136): Illuminate\\Container\\Container->call()
+#10 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Command/Command.php(298): Illuminate\\Console\\Command->execute()
+#11 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run()
+#12 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(1028): Illuminate\\Console\\Command->run()
+#13 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand()
+#14 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#15 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run()
+#16 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/foundation/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run()
+#17 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/framework/src/Kernel.php(91): Illuminate\\Foundation\\Console\\Kernel->handle()
+#18 /home/izaz-khan/development/xmlparser/xmlparser(37): LaravelZero\\Framework\\Kernel->handle()
+#19 {main}
+"} 
+[2022-11-12 18:26:46] development.ERROR: Illuminate\Support\Arr::isAssoc(): Argument #1 ($array) must be of type array, string given, called in /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php on line 123 {"exception":"[object] (TypeError(code: 0): Illuminate\\Support\\Arr::isAssoc(): Argument #1 ($array) must be of type array, string given, called in /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php on line 123 at /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Collections/Arr.php:406)
+[stacktrace]
+#0 /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php(123): Illuminate\\Support\\Arr::isAssoc()
+#1 /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php(102): Revolution\\Google\\Sheets\\Sheets->orderAppendables()
+#2 /home/izaz-khan/development/xmlparser/app/Services/StorageMediums/GoogleSheet/Service.php(56): Revolution\\Google\\Sheets\\Sheets->append()
+#3 /home/izaz-khan/development/xmlparser/app/Commands/XmlToSheet.php(106): App\\Services\\StorageMediums\\GoogleSheet\\Service->saveData()
+#4 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Commands\\XmlToSheet->handle()
+#5 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#6 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#7 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#8 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Container.php(653): Illuminate\\Container\\BoundMethod::call()
+#9 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(136): Illuminate\\Container\\Container->call()
+#10 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Command/Command.php(298): Illuminate\\Console\\Command->execute()
+#11 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run()
+#12 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(1028): Illuminate\\Console\\Command->run()
+#13 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand()
+#14 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#15 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run()
+#16 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/foundation/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run()
+#17 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/framework/src/Kernel.php(91): Illuminate\\Foundation\\Console\\Kernel->handle()
+#18 /home/izaz-khan/development/xmlparser/xmlparser(37): LaravelZero\\Framework\\Kernel->handle()
+#19 {main}
+"} 
+[2022-11-12 18:28:02] development.ERROR: Google\Service\Exception: {
+  "error": {
+    "code": 400,
+    "message": "Invalid values[1][0]: struct_value {\n  fields {\n    key: \"Brand\"\n    value {\n      string_value: \"Green Mountain Coffee\"\n    }\n  }\n  fields {\n    key: \"CaffeineType\"\n    value {\n      string_value: \"Caffeinated\"\n    }\n  }\n  fields {\n    key: \"CategoryName\"\n    value {\n      string_value: \"Green Mountain Ground Coffee\"\n    }\n  }\n  fields {\n    key: \"Count\"\n    value {\n      string_value: \"24\"\n    }\n  }\n  fields {\n    key: \"Facebook\"\n    value {\n      string_value: \"1\"\n    }\n  }\n  fields {\n    key: \"Flavored\"\n    value {\n      string_value: \"No\"\n    }\n  }\n  fields {\n    key: \"Instock\"\n    value {\n      string_value: \"Yes\"\n    }\n  }\n  fields {\n    key: \"IsKCup\"\n    value {\n      string_value: \"0\"\n    }\n  }\n  fields {\n    key: \"Rating\"\n    value {\n      string_value: \"0\"\n    }\n  }\n  fields {\n    key: \"Seasonal\"\n    value {\n      string_value: \"No\"\n    }\n  }\n  fields {\n    key: \"description\"\n    value {\n      string_value: \"\"\n    }\n  }\n  fields {\n    key: \"entity_id\"\n    value {\n      string_value: \"340\"\n    }\n  }\n  fields {\n    key: \"image\"\n    value {\n      string_value: \"http://mcdn.coffeeforless.com/media/catalog/product/images/uploads/intro/frac_box.jpg\"\n    }\n  }\n  fields {\n    key: \"link\"\n    value {\n      string_value: \"http://www.coffeeforless.com/green-mountain-coffee-french-roast-ground-coffee-24-2-2oz-bag.html\"\n    }\n  }\n  fields {\n    key: \"name\"\n    value {\n      string_value: \"Green Mountain Coffee French Roast Ground Coffee 24 2.2oz Bag\"\n    }\n  }\n  fields {\n    key: \"price\"\n    value {\n      string_value: \"41.6000\"\n    }\n  }\n  fields {\n    key: \"shortdesc\"\n    value {\n      string_value: \"Green Mountain Coffee French Roast Ground Coffee 24 2.2oz Bag steeps cup after cup of smoky-sweet, complex dark roast coffee from Green Mountain Ground Coffee.\"\n    }\n  }\n  fields {\n    key: \"sku\"\n    value {\n      string_value: \"20\"\n    }\n  }\n}\n",
+    "errors": [
+      {
+        "message": "Invalid values[1][0]: struct_value {\n  fields {\n    key: \"Brand\"\n    value {\n      string_value: \"Green Mountain Coffee\"\n    }\n  }\n  fields {\n    key: \"CaffeineType\"\n    value {\n      string_value: \"Caffeinated\"\n    }\n  }\n  fields {\n    key: \"CategoryName\"\n    value {\n      string_value: \"Green Mountain Ground Coffee\"\n    }\n  }\n  fields {\n    key: \"Count\"\n    value {\n      string_value: \"24\"\n    }\n  }\n  fields {\n    key: \"Facebook\"\n    value {\n      string_value: \"1\"\n    }\n  }\n  fields {\n    key: \"Flavored\"\n    value {\n      string_value: \"No\"\n    }\n  }\n  fields {\n    key: \"Instock\"\n    value {\n      string_value: \"Yes\"\n    }\n  }\n  fields {\n    key: \"IsKCup\"\n    value {\n      string_value: \"0\"\n    }\n  }\n  fields {\n    key: \"Rating\"\n    value {\n      string_value: \"0\"\n    }\n  }\n  fields {\n    key: \"Seasonal\"\n    value {\n      string_value: \"No\"\n    }\n  }\n  fields {\n    key: \"description\"\n    value {\n      string_value: \"\"\n    }\n  }\n  fields {\n    key: \"entity_id\"\n    value {\n      string_value: \"340\"\n    }\n  }\n  fields {\n    key: \"image\"\n    value {\n      string_value: \"http://mcdn.coffeeforless.com/media/catalog/product/images/uploads/intro/frac_box.jpg\"\n    }\n  }\n  fields {\n    key: \"link\"\n    value {\n      string_value: \"http://www.coffeeforless.com/green-mountain-coffee-french-roast-ground-coffee-24-2-2oz-bag.html\"\n    }\n  }\n  fields {\n    key: \"name\"\n    value {\n      string_value: \"Green Mountain Coffee French Roast Ground Coffee 24 2.2oz Bag\"\n    }\n  }\n  fields {\n    key: \"price\"\n    value {\n      string_value: \"41.6000\"\n    }\n  }\n  fields {\n    key: \"shortdesc\"\n    value {\n      string_value: \"Green Mountain Coffee French Roast Ground Coffee 24 2.2oz Bag steeps cup after cup of smoky-sweet, complex dark roast coffee from Green Mountain Ground Coffee.\"\n    }\n  }\n  fields {\n    key: \"sku\"\n    value {\n      string_value: \"20\"\n    }\n  }\n}\n",
+        "domain": "global",
+        "reason": "badRequest"
+      }
+    ],
+    "status": "INVALID_ARGUMENT"
+  }
+}
+ in /home/izaz-khan/development/xmlparser/vendor/google/apiclient/src/Http/REST.php:134
+Stack trace:
+#0 /home/izaz-khan/development/xmlparser/vendor/google/apiclient/src/Http/REST.php(107): Google\Http\REST::decodeHttpResponse()
+#1 [internal function]: Google\Http\REST::doExecute()
+#2 /home/izaz-khan/development/xmlparser/vendor/google/apiclient/src/Task/Runner.php(187): call_user_func_array()
+#3 /home/izaz-khan/development/xmlparser/vendor/google/apiclient/src/Http/REST.php(66): Google\Task\Runner->run()
+#4 /home/izaz-khan/development/xmlparser/vendor/google/apiclient/src/Client.php(920): Google\Http\REST::execute()
+#5 /home/izaz-khan/development/xmlparser/vendor/google/apiclient/src/Service/Resource.php(238): Google\Client->execute()
+#6 /home/izaz-khan/development/xmlparser/vendor/google/apiclient-services/src/Sheets/Resource/SpreadsheetsValues.php(83): Google\Service\Resource->call()
+#7 /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php(113): Google\Service\Sheets\Resource\SpreadsheetsValues->append()
+#8 /home/izaz-khan/development/xmlparser/app/Services/StorageMediums/GoogleSheet/Service.php(53): Revolution\Google\Sheets\Sheets->append()
+#9 /home/izaz-khan/development/xmlparser/app/Commands/XmlToSheet.php(106): App\Services\StorageMediums\GoogleSheet\Service->saveData()
+#10 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\Commands\XmlToSheet->handle()
+#11 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Util.php(40): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#12 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\Container\Util::unwrapIfClosure()
+#13 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\Container\BoundMethod::callBoundMethod()
+#14 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Container.php(653): Illuminate\Container\BoundMethod::call()
+#15 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(136): Illuminate\Container\Container->call()
+#16 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Command/Command.php(298): Illuminate\Console\Command->execute()
+#17 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\Component\Console\Command\Command->run()
+#18 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(1028): Illuminate\Console\Command->run()
+#19 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(299): Symfony\Component\Console\Application->doRunCommand()
+#20 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(171): Symfony\Component\Console\Application->doRun()
+#21 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\Component\Console\Application->run()
+#22 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/foundation/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\Console\Application->run()
+#23 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/framework/src/Kernel.php(91): Illuminate\Foundation\Console\Kernel->handle()
+#24 /home/izaz-khan/development/xmlparser/xmlparser(37): LaravelZero\Framework\Kernel->handle()
+#25 {main}  
+[2022-11-12 18:46:42] development.ERROR: Google\Service\Exception: {
+  "error": {
+    "code": 400,
+    "message": "Invalid JSON payload received. Unknown name \"item\" at 'data.values': Cannot find field.",
+    "errors": [
+      {
+        "message": "Invalid JSON payload received. Unknown name \"item\" at 'data.values': Cannot find field.",
+        "reason": "invalid"
+      }
+    ],
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.BadRequest",
+        "fieldViolations": [
+          {
+            "field": "data.values",
+            "description": "Invalid JSON payload received. Unknown name \"item\" at 'data.values': Cannot find field."
+          }
+        ]
+      }
+    ]
+  }
+}
+ in /home/izaz-khan/development/xmlparser/vendor/google/apiclient/src/Http/REST.php:134
+Stack trace:
+#0 /home/izaz-khan/development/xmlparser/vendor/google/apiclient/src/Http/REST.php(107): Google\Http\REST::decodeHttpResponse()
+#1 [internal function]: Google\Http\REST::doExecute()
+#2 /home/izaz-khan/development/xmlparser/vendor/google/apiclient/src/Task/Runner.php(187): call_user_func_array()
+#3 /home/izaz-khan/development/xmlparser/vendor/google/apiclient/src/Http/REST.php(66): Google\Task\Runner->run()
+#4 /home/izaz-khan/development/xmlparser/vendor/google/apiclient/src/Client.php(920): Google\Http\REST::execute()
+#5 /home/izaz-khan/development/xmlparser/vendor/google/apiclient/src/Service/Resource.php(238): Google\Client->execute()
+#6 /home/izaz-khan/development/xmlparser/vendor/google/apiclient-services/src/Sheets/Resource/SpreadsheetsValues.php(83): Google\Service\Resource->call()
+#7 /home/izaz-khan/development/xmlparser/vendor/revolution/laravel-google-sheets/src/Concerns/SheetsValues.php(113): Google\Service\Sheets\Resource\SpreadsheetsValues->append()
+#8 /home/izaz-khan/development/xmlparser/app/Services/StorageMediums/GoogleSheet/Service.php(57): Revolution\Google\Sheets\Sheets->append()
+#9 /home/izaz-khan/development/xmlparser/app/Commands/XmlToSheet.php(103): App\Services\StorageMediums\GoogleSheet\Service->saveData()
+#10 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\Commands\XmlToSheet->handle()
+#11 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Util.php(40): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#12 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\Container\Util::unwrapIfClosure()
+#13 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\Container\BoundMethod::callBoundMethod()
+#14 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Container/Container.php(653): Illuminate\Container\BoundMethod::call()
+#15 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(136): Illuminate\Container\Container->call()
+#16 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Command/Command.php(298): Illuminate\Console\Command->execute()
+#17 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\Component\Console\Command\Command->run()
+#18 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(1028): Illuminate\Console\Command->run()
+#19 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(299): Symfony\Component\Console\Application->doRunCommand()
+#20 /home/izaz-khan/development/xmlparser/vendor/symfony/console/Application.php(171): Symfony\Component\Console\Application->doRun()
+#21 /home/izaz-khan/development/xmlparser/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\Component\Console\Application->run()
+#22 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/foundation/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\Console\Application->run()
+#23 /home/izaz-khan/development/xmlparser/vendor/laravel-zero/framework/src/Kernel.php(91): Illuminate\Foundation\Console\Kernel->handle()
+#24 /home/izaz-khan/development/xmlparser/xmlparser(37): LaravelZero\Framework\Kernel->handle()
+#25 {main}  

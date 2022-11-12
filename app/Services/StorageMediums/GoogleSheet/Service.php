@@ -2,39 +2,35 @@
 namespace App\Services\StorageMediums\GoogleSheet;
 
 use Google\Client;
+use App\Helpers\PathHelper;
+use App\Helpers\PrintConsole;
 use App\Exceptions\ServiceException;
 use Revolution\Google\Sheets\Sheets;
 use PulkitJalan\Google\Facades\Google;
-use App\Interfaces\StorageMediumInterface;
+use App\Interfaces\StorageMedium;
 use GuzzleHttp\Exception\ConnectException;
 use League\Flysystem\FileNotFoundException;
 use Google\Service\Exception as GoogleServiceException;
 
-class Service implements StorageMediumInterface
+class Service implements StorageMedium
 {
     protected $sheets;
-    protected $configPath;
+    
     /**
-     * Configuration of google sheet api.
-     */
-    public function __construct($configPath = '')
+    * Configuration of google sheet api.
+    */
+    public function __construct()
     {
-       $this->configPath = $configPath;
+        $task = "Google sheet";
+        PrintConsole::start($task, 'Initializing...');
+        $this->initialize();
+        PrintConsole::completed($task . ' initialized');
     }
-
+    
     public function initialize()
     {
-        $config = config('google');
-        if(is_string($this->configPath) && $this->configPath != '') {
-            $config = array_merge($config, [
-                'service' => [
-                    'file'    => $this->configPath,
-                    'enable'  => env('GOOGLE_SERVICE_ENABLED', true)
-                ]
-            ]);
-        }
-        
-        $client = new \PulkitJalan\Google\Client($config);
+        $path = PathHelper::getFilePath(config('google.service.file'));
+        $client = new \PulkitJalan\Google\Client(config('google'));
         $googleClient = $client->getClient();
         $service = new \Google\Service\Sheets($googleClient);
         $sheets = new Sheets();
@@ -47,20 +43,19 @@ class Service implements StorageMediumInterface
         return $this->sheets;
     }
     
-    public function connectAndSaveData($data)
+    public function saveData($data)
     {
         try {
-            $sheetList = $this->sheets()->spreadsheet($data['spreadsheetId'])->sheetList();
+            $sheetList = $this->sheets()->spreadsheet(config('google.sheet.id'))->sheetList();
             // Check if sheet does exists
-            if (in_array($data['sheetName'], $sheetList)) {
-                $sheet = $this->sheets()->spreadsheet($data['spreadsheetId'])->sheet($data['sheetName']);
-                if (!empty($data['headers'])) {
-                    $sheet->range('A1')->update([$data['headers']]);
-                }
-                $sheet->append($data['data']);
+            if (in_array(config('google.sheet.name'), $sheetList)) {
+                $sheet = $this->sheets()->spreadsheet(config('google.sheet.id'))->sheet(config('google.sheet.name'));
+                $headers = $this->extractHeaders($data);
+                $sheet->range('A1')->update([$headers]);
+                $sheet->append($data['item']);
             } else {
                 // Sheet does not exists
-                throw new ServiceException("[{$data['sheetName']}] does not exists in spreadsheet, please provide a valid sheet name that does exists in spreadsheet");
+                throw new ServiceException("[SheetName] does not exists in spreadsheet, please provide a valid sheet name that does exists in spreadsheet");
             }
             
         } catch (GoogleServiceException $e) {
@@ -74,6 +69,16 @@ class Service implements StorageMediumInterface
         } catch (ConnectException $e) {
             \Log::error($e);
             throw new ServiceException("Connection failed, make sure you are connected to internet, for more detail please check log file");
+        }
+    }
+
+    public function extractHeaders($catalog)
+    {
+        try {
+            return array_keys($catalog['item'][0]);
+        } catch (\Exception $e) {
+            \Log::error($e);
+            throw new ServiceException("Xml headers extraction failed, for more detail please check log file");
         }
     }
 }

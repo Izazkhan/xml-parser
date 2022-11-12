@@ -1,7 +1,7 @@
 <?php
 namespace App\Helpers;
 
-use App\Helpers\CommandHelper;
+use App\Helpers\PathHelper;
 
 class CustomCommandValidator
 {
@@ -11,39 +11,8 @@ class CustomCommandValidator
             PrintConsole::error("[path] option is required");
             return false;
         }
-        
-        if ($options['save'] && !$options['medium']) {
-            PrintConsole::error("[medium] option is required, e.g --medium=mysql or --medium=spreadsheet");
-            return false;
-        }
 
-        if ($options['save'] && $options['medium'] === 'spreadsheet') {
-            // Validating options in case of spreadsheet
-            $requiredOptions = [
-                'cfn' => '--cfn=configurationFilename.json',
-                'sid' => '--sid=spreadsheetId',
-                'sn' => '--sn=sheetname'
-            ];
-            
-            $isOptionsError = false;
-            $optionsError = '';
-            
-            foreach($requiredOptions as $option => $msg) {
-                if (empty($options[$option]) || is_null($options[$option])) {
-                    $isOptionsError = true;
-                    $optionsError .= " {$msg},";
-                }
-            }
-            
-            $optionsError = trim($optionsError,',');
-            // config/credentials file name is missing 
-            if( $isOptionsError) {
-                PrintConsole::error("[Error] to save data, please provide: ".$optionsError . ' option(s)');
-                return false;
-            }
-        }
-
-        $path = CommandHelper::getFilePath($options['path']);
+        $path = PathHelper::getFilePath($options['path']);
 
         // File must exist before we proceed
          if(!file_exists($path)) {
@@ -54,18 +23,6 @@ class CustomCommandValidator
         // File does exists: but check for options, validate and save
         if(!$options['validate'] && !$options['save']) {
             PrintConsole::warning("File [{$path}] does exists!, Please provide some more options what to do with this file?");
-            return false;
-        }
-        
-        /** 
-         * If you want to save the result to google sheet and
-         * did not profived config filename, or 
-         * the config file does not exists
-         */
-        $configPath = CommandHelper::getFilePath($options['cfn']);
-        if(!file_exists($configPath) && $options['save']) {
-            // Credentials file does not exists
-            PrintConsole::error("Google sheets credentials file [{$options['cfn']}] does not exists!");
             return false;
         }
 
