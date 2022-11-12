@@ -48,7 +48,6 @@ class XmlToSheet extends Command
 
     public function handle(StorageMedium $storageMedium)
     {
-        $path = PathHelper::getFilePath($this->option('path'));
         $errorExitCode = 0;
         $successExitCode = 1;
         try {
@@ -58,6 +57,7 @@ class XmlToSheet extends Command
             
             // Get xml file path
             $path = PathHelper::getFilePath($this->option('path'));
+            \Log::info('Entry 2: ' . $path);
             
             // Xml Parser
             $parser = new Parser();

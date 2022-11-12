@@ -12,12 +12,12 @@ return [
     
     'scopes'           => [\Google\Service\Sheets::DRIVE, \Google\Service\Sheets::SPREADSHEETS],
     'service' => [
-        'file'    => storage_path(env('GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION'), 'google/creds.json'),
-        'enable'  => env('GOOGLE_SERVICE_ENABLED', true)
+        'file'    => \Phar::running() ? '/storage/google/creds.json' : storage_path(env('GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION', 'google/creds.json')),
+        'enable'  => true
     ],
     'sheet' => [
-        'id' => env('GOOGLE_SERVICE_SHEET_ID'),
-        'name' => env('GOOGLE_SERVICE_SHEET_NAME'),
+        'id' => '11JFLFFnm_vO2xnTxoXYjJppuolfrL91sU3B-9YDyMg4',
+        'name' => 'Sheet1',
     ]
 ];
 ?>

@@ -30,7 +30,17 @@ class Service implements StorageMedium
     public function initialize()
     {
         $path = PathHelper::getFilePath(config('google.service.file'));
-        $client = new \PulkitJalan\Google\Client(config('google'));
+        $config = config('google');
+        $config = array_merge($config, [
+            'service' => [
+                'file'    => $path,
+                'enable' => true
+            ]
+        ]);
+        \Log::info('Entry 3: ' . $path);
+        \Log::info(['Entry 4: ', $config]);
+        
+        $client = new \PulkitJalan\Google\Client($config);
         $googleClient = $client->getClient();
         $service = new \Google\Service\Sheets($googleClient);
         $sheets = new Sheets();
