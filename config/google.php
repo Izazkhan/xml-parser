@@ -16,8 +16,8 @@ return [
         'enable'  => env('GOOGLE_SERVICE_ENABLED', true)
     ],
     'sheet' => [
-        'id' => '11JFLFFnm_vO2xnTxoXYjJppuolfrL91sU3B-9YDyMg4',
-        'name' => 'Sheet2'
+        'id' => env('GOOGLE_SERVICE_SHEET_ID'),
+        'name' => env('GOOGLE_SERVICE_SHEET_NAME'),
     ]
 ];
 ?>
