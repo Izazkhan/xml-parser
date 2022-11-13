@@ -99,9 +99,9 @@ class XmlToSheet extends Command
                 // This try_catch block is for Google Spreadsheet / Storage medium
                 try {
                     // Task: to save data to storage medium
-                    PrintConsole::start($task, 'Saving data...');
+                    PrintConsole::start('Saving data', 'processing...');
                     $storageMedium->saveData($dataToBeStored);
-                    PrintConsole::completed($task . ' data saved');
+                    PrintConsole::completed('Data saved successfully');
                     
                 } catch (ServiceException $e) {
                     PrintConsole::failed($task);
