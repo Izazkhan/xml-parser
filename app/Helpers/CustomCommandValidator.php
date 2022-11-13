@@ -15,9 +15,10 @@ class CustomCommandValidator
         $path = PathHelper::getFilePath($options['path']);
 
         // File must exist before we proceed
-         if(!file_exists($path)) {
+        if(!file_exists($path)) {
             PrintConsole::error("File [{$path}] does not exists!");
-            return false; // Error exit code
+            // Error exit code
+            return false;
         }
 
         // File does exists: but check for options, validate and save

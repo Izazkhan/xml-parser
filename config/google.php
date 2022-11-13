@@ -12,7 +12,7 @@ return [
     
     'scopes'           => [\Google\Service\Sheets::DRIVE, \Google\Service\Sheets::SPREADSHEETS],
     'service' => [
-        'file'    => \Phar::running() ? '/storage/google/creds.json' : storage_path(env('GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION', 'google/creds.json')),
+        'file'    => '/storage/google/creds.json',
         'enable'  => true
     ],
     'sheet' => [

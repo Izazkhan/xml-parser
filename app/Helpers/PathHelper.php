@@ -22,10 +22,6 @@ class PathHelper
         }
         
         $path = dirname(\Phar::running(false)).'/'.$path;
-        // for docker container purpose: edge case that just happend
-        if(strpos($path, '//') === 0) {
-            $path = substr($path, 1);
-        }
         return $path;
     }
 }
